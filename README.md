@@ -14,7 +14,7 @@ Small project to learn C++ and how search engines work.
 # Build the executable
 make
 # Run the executable
-./bin/search <query>
+./build/search <query>
 ```
 
 TODO:
