@@ -21,3 +21,4 @@ TODO:
 
 - [ ] Removing documents by id?
   - [ ] Indexing documents should also remove previous documents with same id from index
+- [ ] Scoring function https://youtu.be/DQ4u1t_Unpo?t=404
