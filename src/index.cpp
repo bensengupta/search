@@ -56,7 +56,7 @@ void Index::indexDocuments(vector<Document> documents)
 	mergeInverseIndex(newInverseIndex);
 }
 
-void Index::mergeInverseIndex(std::map<std::string, std::vector<std::tuple<int, int>>> newInverseIndex)
+void Index::mergeInverseIndex(map<string, vector<tuple<int, int>>> newInverseIndex)
 {
 	for (const auto &[term, posVec] : newInverseIndex)
 	{

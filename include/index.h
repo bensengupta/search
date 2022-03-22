@@ -2,6 +2,7 @@
 #define INDEX_H
 
 #include <map>
+#include <unordered_map>
 #include <string>
 #include <vector>
 #include <tuple>
@@ -14,9 +15,9 @@ public:
 	std::vector<Document *> search(std::string query);
 
 private:
-	std::map<int, Document> documentIdMap;
-	/// map<term, tuple<doc_id, position_in_doc>>
-	std::map<std::string, std::vector<std::tuple<int, int>>> inverseIndex;
+	std::unordered_map<int, Document> documentIdMap;
+	/// unordered_map<term, tuple<doc_id, position_in_doc>>
+	std::unordered_map<std::string, std::vector<std::tuple<int, int>>> inverseIndex;
 	void mergeInverseIndex(std::map<std::string, std::vector<std::tuple<int, int>>> newInverseIndex);
 	std::vector<std::string> getQueryTerms(std::string query);
 };
