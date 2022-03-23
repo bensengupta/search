@@ -32,5 +32,6 @@ make debug
 
 ## TODO
 
-- [ ] Removing documents by id?
-  - [ ] Indexing documents should also remove previous documents with same id from index
+- [ ] Indexing documents should also remove previous documents with same id from index
+  - Removing documents by searching through entire index for id
+  - or pop old document with same id from storage, find what words it contains and only search & remove in those indices

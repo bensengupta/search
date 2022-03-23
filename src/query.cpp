@@ -31,19 +31,19 @@ QueryNode *QueryNode::create() { return new QueryNode(); }
 
 QueryNodeResult QueryNode::next() { return QueryNodeResult::EndNode(); }
 
-vector<int> QueryNode::executeQuery(QueryNode *node, int max) {
-  vector<int> docIds{};
+vector<QueryNodeResult> QueryNode::executeQuery(QueryNode *node, int max) {
+  vector<QueryNodeResult> results{};
 
   QueryNodeResult res = node->next();
 
   int i = 0;
-  while (!res.endReached && i <= max) {
-    docIds.push_back(res.docId);
+  while (!res.endReached && i < max) {
+    results.push_back(res);
     res = node->next();
     i++;
   }
 
-  return docIds;
+  return results;
 }
 
 QueryNode::~QueryNode() {}

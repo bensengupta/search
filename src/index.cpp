@@ -127,14 +127,14 @@ vector<Document *> Index::search(string queryString, int maxResults) {
 
   QueryNode *query = buildQuery(queryTerms);
 
-  vector<int> docIds = QueryNode::executeQuery(query, maxResults);
+  auto results = QueryNode::executeQuery(query, maxResults);
 
   delete query;
 
   vector<Document *> hits{};
 
-  for (auto id : docIds) {
-    hits.push_back(&documentIdMap.find(id)->second);
+  for (auto res : results) {
+    hits.push_back(&documentIdMap.find(res.docId)->second);
   }
 
   return hits;
