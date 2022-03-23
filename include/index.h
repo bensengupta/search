@@ -23,7 +23,7 @@ private:
   void mergeInverseIndex(
       std::map<std::string, std::vector<std::tuple<int, int>>> newInverseIndex);
   QueryNode *buildQuery(std::vector<std::string>);
-  std::vector<std::string> getQueryTerms(std::string query);
+  static std::vector<std::string> getQueryTerms(std::string query);
 };
 
 #endif // INDEX_H

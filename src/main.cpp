@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
   string query = argv[2];
 
   timer.start();
-  auto hits = index.search(query, 100);
+  auto hits = index.search(query, 10);
   timer.end();
 
   cout << "Query: " << query << endl;

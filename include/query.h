@@ -29,8 +29,6 @@ public:
   virtual QueryNodeResult next();
   /// Execute query with a given max hits and return a vector of document ids
   static std::vector<int> executeQuery(QueryNode *node, int max);
-  /// Frees entire query
-  static void freeQuery(QueryNode *node);
   virtual ~QueryNode();
 };
 

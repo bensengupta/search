@@ -48,11 +48,6 @@ vector<int> QueryNode::executeQuery(QueryNode *node, int max) {
 
 QueryNode::~QueryNode() {}
 
-void QueryNode::freeQuery(QueryNode *node) {
-  if (node != NULL)
-    delete node;
-}
-
 /**
  * QueryNodeTerm methods
  */

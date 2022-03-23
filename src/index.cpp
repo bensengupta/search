@@ -125,11 +125,11 @@ QueryNode *Index::buildQuery(vector<string> queryTerms) {
 vector<Document *> Index::search(string queryString, int maxResults) {
   vector<string> queryTerms = getQueryTerms(queryString);
 
-  QueryNode *query = Index::buildQuery(queryTerms);
+  QueryNode *query = buildQuery(queryTerms);
 
   vector<int> docIds = QueryNode::executeQuery(query, maxResults);
 
-  QueryNode::freeQuery(query);
+  delete query;
 
   vector<Document *> hits{};
 
