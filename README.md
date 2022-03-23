@@ -5,6 +5,8 @@
 - Learn C++ (this was my first C++ project)
 - Learn how search engines work
 
+## Setup
+
 ### Prerequisites
 
 - [GNU GCC](https://gcc.gnu.org/)
