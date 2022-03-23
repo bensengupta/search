@@ -6,9 +6,6 @@
 
 using namespace std;
 
-// Heavily inspired by Victor Lavrenko's "Inverted Indexing" lecture series
-// https://www.youtube.com/watch?v=QA_vuzx9mt4&list=PLBv09BD7ez_448q9kRfZRxYb3cbeEanRb
-
 int main(int argc, char *argv[]) {
   if (argc < 2) {
     cerr << "Error: Please specify a search query (\"search <query>\")" << endl;

@@ -5,10 +5,6 @@
 
 using namespace std;
 
-// References:
-// - Search Engine Indexing, Wikipedia
-//   https://en.wikipedia.org/wiki/Search_engine_indexing
-
 void Index::indexDocuments(vector<Document> documents, string delims,
                            string charsToSkip) {
   // Step 1: Build a forward index
