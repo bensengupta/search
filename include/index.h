@@ -11,8 +11,9 @@
 
 class Index {
 public:
-  void indexDocuments(std::vector<Document> documents);
-  std::vector<Document *> search(std::string query);
+  void indexDocuments(std::vector<Document> documents, std::string delims,
+                      std::string charsToSkip);
+  std::vector<Document *> search(std::string query, int maxResults);
 
 private:
   std::unordered_map<int, Document> documentIdMap;

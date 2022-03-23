@@ -11,7 +11,8 @@ public:
   int id;
   std::string text;
   Document(int id, std::string text);
-  std::vector<std::string> getTerms();
+  std::vector<std::string> getTerms(std::string delims,
+                                    std::string charsToSkip);
 };
 
 #endif // DOCUMENT_H

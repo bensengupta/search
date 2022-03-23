@@ -9,7 +9,8 @@ using namespace std;
 // - Search Engine Indexing, Wikipedia
 //   https://en.wikipedia.org/wiki/Search_engine_indexing
 
-void Index::indexDocuments(vector<Document> documents) {
+void Index::indexDocuments(vector<Document> documents, string delims,
+                           string charsToSkip) {
   // Step 1: Build a forward index
   // Step 2: Convert to intermediate inverse index
   // Step 2: Merge with main inverted index
@@ -23,7 +24,7 @@ void Index::indexDocuments(vector<Document> documents) {
     documentIdMap.insert(make_pair(doc.id, doc));
 
     // Add to forward index
-    vector<string> terms = doc.getTerms();
+    vector<string> terms = doc.getTerms(delims, charsToSkip);
 
     for (size_t i = 0; i < terms.size(); i++) {
       auto term = terms[i];
@@ -121,12 +122,12 @@ QueryNode *Index::buildQuery(vector<string> queryTerms) {
   return query;
 }
 
-vector<Document *> Index::search(string queryString) {
+vector<Document *> Index::search(string queryString, int maxResults) {
   vector<string> queryTerms = getQueryTerms(queryString);
 
   QueryNode *query = Index::buildQuery(queryTerms);
 
-  vector<int> docIds = QueryNode::executeQuery(query, 10);
+  vector<int> docIds = QueryNode::executeQuery(query, maxResults);
 
   QueryNode::freeQuery(query);
 

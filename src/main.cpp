@@ -25,15 +25,19 @@ int main(int argc, char *argv[]) {
   vector<Document> docs = datasource.getDocuments();
   timer.end();
 
+  string delims = " _";
+  string charsToSkip = ",.:;'\"()!?";
+
   cout << "Building index..." << endl;
   timer.start();
-  index.indexDocuments(docs);
+  index.indexDocuments(docs, delims, charsToSkip);
   timer.end();
 
   cout << "Querying..." << endl;
   string query = argv[2];
+
   timer.start();
-  auto hits = index.search(query);
+  auto hits = index.search(query, 100);
   timer.end();
 
   cout << "Query: " << query << endl;
