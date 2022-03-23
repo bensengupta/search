@@ -1,3 +1,4 @@
+#include "../include/datasource.h"
 #include "../include/document.h"
 #include "../include/index.h"
 #include <iostream>
@@ -13,27 +14,20 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
+  auto datasource = FileDataSource(string(argv[1]));
+
   Index index;
 
-  index.indexDocuments({
-      Document(1, "He likes to wink, he likes to drink."),
-      Document(2, "He likes to drink, and drink, and drink."),
-      Document(3, "The thing he likes to drink is ink."),
-  });
+  index.indexDocuments(datasource.getDocuments());
 
-  index.indexDocuments({
-      Document(4, "The ink he likes to drink is pink."),
-      Document(5, "He likes to wink and drink pink ink."),
-  });
-
-  string query = argv[1];
+  string query = argv[2];
 
   auto hits = index.search(query);
 
   cout << "Query: " << query << endl;
 
   for (auto hit : hits) {
-    cout << "Hit: doc " << hit->id << endl;
+    cout << "Hit: doc " << hit->id << " '" << hit->text << "'" << endl;
   }
 
   return 0;

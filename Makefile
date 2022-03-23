@@ -24,6 +24,9 @@ headers: include/document.h include/query.h include/index.h
 build/document.o: src/document.cpp headers
 	$(CC) -c $(CFLAGS) src/document.cpp -o build/document.o
 
+build/datasource.o: src/datasource.cpp headers
+	$(CC) -c $(CFLAGS) src/datasource.cpp -o build/datasource.o
+
 build/index.o: src/index.cpp headers
 	$(CC) -c $(CFLAGS) src/index.cpp -o build/index.o
 
@@ -34,5 +37,5 @@ build/main.o: src/main.cpp headers
 	$(CC) -c $(CFLAGS) src/main.cpp -o build/main.o
 
 # Build buildary rule
-build/search: build/document.o build/index.o build/query.o build/main.o
-	$(CC) $(CFLAGS) build/document.o build/index.o build/query.o build/main.o -o build/search
+build/search: build/document.o build/datasource.o build/index.o build/query.o build/main.o
+	$(CC) $(CFLAGS) build/document.o build/datasource.o build/index.o build/query.o build/main.o -o build/search
