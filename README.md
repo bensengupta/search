@@ -6,21 +6,28 @@ Small project to learn C++ and how search engines work.
 
 ### Prerequisites
 
-- Requires [GNU GCC](https://gcc.gnu.org/)
+- [GNU GCC](https://gcc.gnu.org/)
+- [GNU Make](https://gnu.org/software/make)
 
 ### Building
 
-```
-# Build the executable
+```bash
+git clone https://github.com/bensengupta/search
+cd search
 make
-# Run the executable
-./build/search <query>
+# Run the executable: ./build/search <title file> <query>
+./build/search titles_100k.txt France
 ```
 
-TODO:
+### Development
+
+```bash
+# Build the executable with debug flags
+make debug
+./build/search titles_100k.txt France
+```
+
+## TODO
 
 - [ ] Removing documents by id?
   - [ ] Indexing documents should also remove previous documents with same id from index
-- [ ] Scoring function https://youtu.be/DQ4u1t_Unpo?t=404
-      Kinda like this: `float Index::score(vector<int> positions)`
-      Term 1 found at pos 8, term 2 & 3 not found `score({ 8, -1, -1 })`
