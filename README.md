@@ -19,6 +19,9 @@ make
 ./build/search titles_100k.txt France
 ```
 
+`titles_100k.txt` is the first 100K wikipedia page titles extracted from [enwiki-latest-all-titles.gz](https://dumps.wikimedia.org/enwiki/latest/),
+with underscores replaced by spaces.
+
 ### Development
 
 ```bash
