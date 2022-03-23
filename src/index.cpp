@@ -1,5 +1,4 @@
 #include "../include/index.h"
-#include "../include/query.h"
 #include <iostream>
 #include <set>
 #include <stdexcept>

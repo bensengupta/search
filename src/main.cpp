@@ -1,6 +1,7 @@
 #include "../include/datasource.h"
 #include "../include/document.h"
 #include "../include/index.h"
+#include "../include/timer.h"
 #include <iostream>
 
 using namespace std;
@@ -14,15 +15,26 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  auto datasource = FileDataSource(string(argv[1]));
-
   Index index;
+  Timer timer;
 
-  index.indexDocuments(datasource.getDocuments());
+  FileDataSource datasource = FileDataSource(string(argv[1]));
 
+  cout << "Reading file..." << endl;
+  timer.start();
+  vector<Document> docs = datasource.getDocuments();
+  timer.end();
+
+  cout << "Building index..." << endl;
+  timer.start();
+  index.indexDocuments(docs);
+  timer.end();
+
+  cout << "Querying..." << endl;
   string query = argv[2];
-
+  timer.start();
   auto hits = index.search(query);
+  timer.end();
 
   cout << "Query: " << query << endl;
 
