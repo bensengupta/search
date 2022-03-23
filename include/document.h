@@ -3,16 +3,15 @@
 
 #include <map>
 #include <string>
-#include <vector>
 #include <tuple>
+#include <vector>
 
-class Document
-{
+class Document {
 public:
-	int id;
-	std::string text;
-	Document(int id, std::string text);
-	std::vector<std::string> getTerms();
+  int id;
+  std::string text;
+  Document(int id, std::string text);
+  std::vector<std::string> getTerms();
 };
 
 #endif // DOCUMENT_H

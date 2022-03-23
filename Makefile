@@ -1,6 +1,6 @@
 # Build config vars
 CC=g++
-CFLAGS=-Wall -std=c++17
+CFLAGS=-Wall -std=c++17 -O2
 
 all: directories build/search
 
@@ -18,16 +18,21 @@ clean:
 debug: CFLAGS += -g
 debug: all
 
+headers: include/document.h include/query.h include/index.h
+
 # Build buildects
-build/document.o: src/document.cpp include/document.h
+build/document.o: src/document.cpp headers
 	$(CC) -c $(CFLAGS) src/document.cpp -o build/document.o
 
-build/index.o: src/index.cpp include/index.h
+build/index.o: src/index.cpp headers
 	$(CC) -c $(CFLAGS) src/index.cpp -o build/index.o
 
-build/main.o: src/main.cpp include/index.h include/document.h
+build/query.o: src/query.cpp headers
+	$(CC) -c $(CFLAGS) src/query.cpp -o build/query.o
+
+build/main.o: src/main.cpp headers
 	$(CC) -c $(CFLAGS) src/main.cpp -o build/main.o
 
 # Build buildary rule
-build/search: build/document.o build/index.o build/main.o
-	$(CC) $(CFLAGS) build/document.o build/index.o build/main.o -o build/search
+build/search: build/document.o build/index.o build/query.o build/main.o
+	$(CC) $(CFLAGS) build/document.o build/index.o build/query.o build/main.o -o build/search
