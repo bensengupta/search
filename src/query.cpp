@@ -1,4 +1,4 @@
-#include "../include/query.h"
+#include <query.h>
 #include <iostream>
 
 using namespace std;
@@ -16,11 +16,11 @@ QueryNodeResult::QueryNodeResult(bool endReached, int docId, int posStart,
 }
 
 QueryNodeResult QueryNodeResult::EndNode() {
-  return QueryNodeResult(true, -1, -1, -1);
+  return {true, -1, -1, -1};
 }
 
 QueryNodeResult QueryNodeResult::Node(int docId, int posStart, int posEnd) {
-  return QueryNodeResult(false, docId, posStart, posEnd);
+  return {false, docId, posStart, posEnd};
 }
 
 /**
@@ -46,7 +46,7 @@ vector<QueryNodeResult> QueryNode::executeQuery(QueryNode *node, int max) {
   return results;
 }
 
-QueryNode::~QueryNode() {}
+QueryNode::~QueryNode() = default;
 
 /**
  * QueryNodeTerm methods
@@ -62,7 +62,7 @@ QueryNode *QueryNodeTerm::create(vector<tuple<int, int>> *index) {
 }
 
 QueryNodeResult QueryNodeTerm::next() {
-  if (index == NULL) {
+  if (index == nullptr) {
     return QueryNodeResult::EndNode();
   }
   if (i >= index->size()) {

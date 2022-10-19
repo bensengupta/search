@@ -1,16 +1,17 @@
-#include "../include/document.h"
+#include <document.h>
+#include <utility>
 
 using namespace std;
 
 Document::Document(int id, string text) {
   this->id = id;
-  this->text = text;
+  this->text = std::move(text);
 }
 
-vector<string> Document::getTerms(string delims, string charsToSkip) {
+vector<string> Document::getTerms(const string &delims, const string &charsToSkip) {
   vector<string> terms{};
 
-  string currentWord = "";
+  string currentWord;
 
   for (char c : text) {
     bool shouldSkip = false;
@@ -43,7 +44,7 @@ vector<string> Document::getTerms(string delims, string charsToSkip) {
   }
 
   // Push last word
-  if (currentWord.size() != 0) {
+  if (!currentWord.empty()) {
     terms.push_back(currentWord);
   }
 

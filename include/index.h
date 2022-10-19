@@ -1,8 +1,8 @@
 #ifndef INDEX_H
 #define INDEX_H
 
-#include "document.h"
-#include "query.h"
+#include <document.h>
+#include <query.h>
 #include <map>
 #include <string>
 #include <tuple>
@@ -11,9 +11,9 @@
 
 class Index {
 public:
-  void indexDocuments(std::vector<Document> documents, std::string delims,
-                      std::string charsToSkip);
-  std::vector<Document *> search(std::string query, int maxResults);
+  void indexDocuments(std::vector<Document> &documents, const std::string &delims,
+                      const std::string &charsToSkip);
+  std::vector<Document *> search(const std::string& query, int maxResults);
 
 private:
   std::unordered_map<int, Document> documentIdMap;
@@ -21,7 +21,7 @@ private:
   std::unordered_map<std::string, std::vector<std::tuple<int, int>>>
       inverseIndex;
   void mergeInverseIndex(
-      std::map<std::string, std::vector<std::tuple<int, int>>> newInverseIndex);
+          const std::map<std::string, std::vector<std::tuple<int, int>>> &newInverseIndex);
   QueryNode *buildQuery(std::vector<std::string>);
   static std::vector<std::string> getQueryTerms(std::string query);
 };

@@ -1,7 +1,7 @@
-#include "../include/datasource.h"
-#include "../include/document.h"
-#include "../include/index.h"
-#include "../include/timer.h"
+#include <datasource.h>
+#include <document.h>
+#include <index.h>
+#include <timer.h>
 #include <iostream>
 
 using namespace std;
