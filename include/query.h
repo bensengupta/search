@@ -35,19 +35,19 @@ public:
 class QueryNodeTerm : public QueryNode {
 public:
   static QueryNode *create(std::vector<std::tuple<int, int>> *index);
-  QueryNodeResult next();
+  QueryNodeResult next() override;
 
 private:
   size_t i;
-  QueryNodeTerm(std::vector<std::tuple<int, int>> *index);
+  explicit QueryNodeTerm(std::vector<std::tuple<int, int>> *index);
   std::vector<std::tuple<int, int>> *index;
 };
 
 class QueryNodePhrase : public QueryNode {
 public:
   static QueryNode *create(QueryNode *node1, QueryNode *node2);
-  QueryNodeResult next();
-  ~QueryNodePhrase();
+  QueryNodeResult next() override;
+  ~QueryNodePhrase() override;
 
 private:
   QueryNode *node1;

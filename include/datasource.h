@@ -10,8 +10,8 @@ public:
 
 class FileDataSource : public DataSource {
 public:
-  FileDataSource(std::string filename);
-  std::vector<Document> getDocuments();
+  explicit FileDataSource(std::string filename);
+  std::vector<Document> getDocuments() override;
 
 private:
   std::string filename;

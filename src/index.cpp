@@ -5,8 +5,8 @@
 
 using namespace std;
 
-void Index::indexDocuments(vector<Document> documents, string delims,
-                           string charsToSkip) {
+void Index::indexDocuments(vector<Document> &documents, const string &delims,
+                           const string &charsToSkip) {
   // Step 1: Build a forward index
   // Step 2: Convert to intermediate inverse index
   // Step 2: Merge with main inverted index
@@ -48,7 +48,7 @@ void Index::indexDocuments(vector<Document> documents, string delims,
 }
 
 void Index::mergeInverseIndex(
-    map<string, vector<tuple<int, int>>> newInverseIndex) {
+        const map<string, vector<std::tuple<int, int>>> &newInverseIndex) {
   for (const auto &[term, posVec] : newInverseIndex) {
     if (inverseIndex.find(term) == inverseIndex.end()) {
       inverseIndex.insert(make_pair(term, vector<tuple<int, int>>()));
@@ -61,7 +61,7 @@ void Index::mergeInverseIndex(
     while (cursorMain != inverseIndex[term].size() &&
            cursorNew != posVec.size()) {
       if (get<0>(inverseIndex[term][cursorMain]) > get<0>(posVec[cursorNew])) {
-        inverseIndex[term].insert(inverseIndex[term].begin() + cursorMain,
+        inverseIndex[term].insert(inverseIndex[term].begin() + static_cast<long long>(cursorMain),
                                   posVec[cursorNew]);
         cursorMain++;
         cursorNew++;
@@ -92,7 +92,7 @@ vector<string> Index::getQueryTerms(string query) {
 }
 
 QueryNode *Index::buildQuery(vector<string> queryTerms) {
-  if (queryTerms.size() == 0) {
+  if (queryTerms.empty()) {
     throw runtime_error("Error: unexpected length 0 of query terms.");
   }
 
@@ -118,7 +118,7 @@ QueryNode *Index::buildQuery(vector<string> queryTerms) {
   return query;
 }
 
-vector<Document *> Index::search(string queryString, int maxResults) {
+vector<Document *> Index::search(const string& queryString, int maxResults) {
   vector<string> queryTerms = getQueryTerms(queryString);
 
   QueryNode *query = buildQuery(queryTerms);
