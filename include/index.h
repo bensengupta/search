@@ -1,8 +1,8 @@
 #ifndef INDEX_H
 #define INDEX_H
 
-#include "document.h"
-#include "query.h"
+#include <document.h>
+#include <query.h>
 #include <map>
 #include <string>
 #include <tuple>

@@ -1,7 +1,7 @@
 #ifndef QUERY_H
 #define QUERY_H
 
-#include "document.h"
+#include <document.h>
 #include <map>
 #include <string>
 #include <tuple>

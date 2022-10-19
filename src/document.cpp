@@ -1,4 +1,4 @@
-#include "../include/document.h"
+#include <document.h>
 
 using namespace std;
 

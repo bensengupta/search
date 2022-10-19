@@ -1,7 +1,7 @@
 #ifndef DATASOURCE_H
 #define DATASOURCE_H
 
-#include "document.h"
+#include <document.h>
 
 class DataSource {
 public:
